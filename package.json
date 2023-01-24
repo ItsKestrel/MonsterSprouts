@@ -5,18 +5,26 @@
     "main": "dist/main.js",
     "scripts": {
         "build": "parcel build",
-        "dev": "parcel",
+        "dev": "parcel --target app",
         "start": "electron ."
     },
     "targets": {
         "default": {
             "source": "src/main.ts",
             "context": "electron-main",
-            "distDir": "dist"
+            "distDir": "dist",
+            "publicUrl": "./"
+        },
+        "preload": {
+            "source": "src/preload.ts",
+            "context": "electron-renderer",
+            "distDir": "dist",
+            "publicUrl": "./"
         },
         "app": {
             "source": "src/index.html",
-            "distDir": "dist"
+            "distDir": "dist",
+            "publicUrl": "./"
         }
     },
     "contributors": [
@@ -25,11 +33,11 @@
             "email": "b.haggstrom@chia.net"
         },
         {
-            "name": "Barney Rubble",
+            "name": "Ryan Welford",
             "email": "r.welford@chia.net"
         },
         {
-            "name": "Barney Rubble",
+            "name": "Eric Zietlow",
             "email": "e.zietlow@chia.net"
         }
     ],
