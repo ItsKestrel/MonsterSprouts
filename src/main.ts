@@ -1,14 +1,14 @@
-import {app, BrowserWindow} from 'electron';
+import { app, BrowserWindow } from 'electron';
 
 const createWindow = () => {
     const win = new BrowserWindow({
-      width: 800,
-      height: 600
-    })
-  
-    win.loadFile('index.html')
-  }
+        width: 800,
+        height: 600,
+    });
 
-  app.whenReady().then(() => {
-    createWindow()
-  })
+    win.loadFile('index.html');
+};
+
+app.whenReady().then(() => {
+    createWindow();
+});
