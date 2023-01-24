@@ -1,0 +1,36 @@
+{
+    "name": "monster-sprouts",
+    "version": "1.0.0",
+    "repository": "https://github.com/mando222/MonsterSprouts",
+    "source": "src/index.html",
+    "scripts": {
+        "build": "parcel build",
+        "dev": "parcel",
+        "start": "electron ."
+    },
+    "contributors": [
+        {
+            "name": "Brandon Haggstrom",
+            "email": "b.haggstrom@chia.net"
+        },
+        {
+            "name": "Barney Rubble",
+            "email": "r.welford@chia.net"
+        },
+        {
+            "name": "Barney Rubble",
+            "email": "e.zietlow@chia.net"
+        }
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/react": "^18.0.27",
+        "@types/react-dom": "^18.0.10",
+        "parcel": "^2.8.3",
+        "process": "^0.11.10"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
+}
