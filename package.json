@@ -2,11 +2,22 @@
     "name": "monster-sprouts",
     "version": "1.0.0",
     "repository": "https://github.com/mando222/MonsterSprouts",
-    "source": "src/index.html",
+    "main": "dist/main.js",
     "scripts": {
         "build": "parcel build",
         "dev": "parcel",
         "start": "electron ."
+    },
+    "targets": {
+        "default": {
+            "source": "src/main.ts",
+            "context": "electron-main",
+            "distDir": "dist"
+        },
+        "app": {
+            "source": "src/index.html",
+            "distDir": "dist"
+        }
     },
     "contributors": [
         {
@@ -26,6 +37,7 @@
     "devDependencies": {
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",
+        "electron": "^23.0.0-beta.5",
         "parcel": "^2.8.3",
         "process": "^0.11.10"
     },
