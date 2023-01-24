@@ -1,8 +1,19 @@
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from './pages/Login';
+import Game from './pages/Game';
+import Market from './pages/Market';
+import Main from './pages/Main';
+
 function App() {
     return (
-        <div className="app">
-            <h1>Gooood Moooooorning Neverland!</h1>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/game' element={<Game />} />
+                <Route path='/market' element={<Market />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
