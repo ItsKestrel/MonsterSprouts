@@ -2,27 +2,31 @@
     "name": "monster-sprouts",
     "version": "1.0.0",
     "repository": "https://github.com/mando222/MonsterSprouts",
-    "main": "dist/main.js",
     "scripts": {
         "build": "parcel build",
         "dev": "parcel --target app",
         "start": "electron ."
     },
     "targets": {
-        "default": {
-            "source": "src/main.ts",
+        "server": {
+            "source": "src/server/index.ts",
+            "context": "node",
+            "distDir": "dist"
+        },
+        "client": {
+            "source": "src/client/main.ts",
             "context": "electron-main",
             "distDir": "dist",
             "publicUrl": "./"
         },
-        "preload": {
-            "source": "src/preload.ts",
-            "context": "electron-renderer",
+        "web": {
+            "source": "src/client/index.html",
             "distDir": "dist",
             "publicUrl": "./"
         },
-        "app": {
-            "source": "src/index.html",
+        "preload": {
+            "source": "src/client/preload.ts",
+            "context": "electron-renderer",
             "distDir": "dist",
             "publicUrl": "./"
         }
@@ -52,7 +56,6 @@
         "tailwindcss": "^3.2.4"
     },
     "dependencies": {
-        "lightningcss-darwin-arm64": "^1.18.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.7.0"
