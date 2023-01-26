@@ -2,35 +2,9 @@
     "name": "monster-sprouts",
     "version": "1.0.0",
     "repository": "https://github.com/mando222/MonsterSprouts",
-    "scripts": {
-        "build": "parcel build",
-        "dev": "parcel --target app",
-        "start": "electron ."
-    },
-    "targets": {
-        "server": {
-            "source": "src/server/index.ts",
-            "context": "node",
-            "distDir": "dist"
-        },
-        "client": {
-            "source": "src/client/main.ts",
-            "context": "electron-main",
-            "distDir": "dist",
-            "publicUrl": "./"
-        },
-        "web": {
-            "source": "src/client/index.html",
-            "distDir": "dist",
-            "publicUrl": "./"
-        },
-        "preload": {
-            "source": "src/client/preload.ts",
-            "context": "electron-renderer",
-            "distDir": "dist",
-            "publicUrl": "./"
-        }
-    },
+    "workspaces": [
+        "packages/*"
+    ],
     "contributors": [
         {
             "name": "Brandon Haggstrom",
@@ -47,17 +21,9 @@
     ],
     "license": "MIT",
     "devDependencies": {
-        "@types/react": "^18.0.27",
-        "@types/react-dom": "^18.0.10",
-        "electron": "^23.0.0-beta.5",
         "parcel": "^2.8.3",
         "postcss": "^8.4.21",
         "process": "^0.11.10",
         "tailwindcss": "^3.2.4"
-    },
-    "dependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router-dom": "^6.7.0"
     }
 }

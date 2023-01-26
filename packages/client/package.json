@@ -1,0 +1,38 @@
+{
+    "private": true,
+    "main": "dist/main.js",
+    "scripts": {
+        "build": "parcel build",
+        "dev": "parcel --target app",
+        "start": "electron ."
+    },
+    "targets": {
+        "default": {
+            "source": "src/main.ts",
+            "context": "electron-main",
+            "distDir": "dist",
+            "publicUrl": "./"
+        },
+        "app": {
+            "source": "src/index.html",
+            "distDir": "dist",
+            "publicUrl": "./"
+        },
+        "preload": {
+            "source": "src/preload.ts",
+            "context": "electron-renderer",
+            "distDir": "dist",
+            "publicUrl": "./"
+        }
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.27",
+        "@types/react-dom": "^18.0.10",
+        "electron": "^23.0.0-beta.5"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.8.0"
+    }
+}
