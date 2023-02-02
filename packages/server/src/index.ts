@@ -1,5 +1,6 @@
 import express from 'express';
-import { Test } from '../../shared/src';
+import { Test, NewGame } from '../../shared/src';
+import {v4 as uuidv4} from 'uuid';
 
 const app = express();
 
@@ -13,6 +14,12 @@ app.get('/api/v1/test', (_req, res) => {
     res.send(response);
 });
 
-const port = process.env.PORT!;
+app.get('/api/v1/new-game', (_req, res) => {
+    let response: NewGame = {
+        gameid: uuidv4()
+    }
+})
+
+const port = process.env.SERVER_PORT!;
 
 app.listen(port, () => console.log(`Server started on port ${port}.`));
