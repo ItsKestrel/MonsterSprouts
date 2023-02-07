@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import React, { useEffect, useRef, useState } from "react";
 
 import Banner from "./components/Banner";
@@ -40,7 +39,8 @@ import { useChainData } from "./contexts/ChainDataContext";
 // Normal import does not work here
 const { version } = require("@walletconnect/sign-client/package.json");
 
-const Home: NextPage = () => {
+/* const Home: NextPage = () => { */
+const WalletConnect = () => {
   const [modal, setModal] = useState("");
 
   const closeModal = () => setModal("");
@@ -459,4 +459,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default WalletConnect;
