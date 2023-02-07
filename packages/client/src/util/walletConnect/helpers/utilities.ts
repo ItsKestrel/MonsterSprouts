@@ -1,9 +1,9 @@
-import { BigNumber, BigNumberish, providers, utils } from "ethers";
-import * as encoding from "@walletconnect/encoding";
+/* import { BigNumber, BigNumberish, providers, utils } from "ethers";
 import { TypedDataUtils } from "eth-sig-util";
 import * as ethUtil from "ethereumjs-util";
+import { eip1271 } from "./eip1271"; */
+import * as encoding from "@walletconnect/encoding";
 
-import { eip1271 } from "./eip1271";
 import { DEFAULT_CHAINS } from "../constants";
 
 export function capitalize(string: string): string {
@@ -82,7 +82,7 @@ export function isMobile(): boolean {
   return mobile;
 }
 
-export function encodePersonalMessage(msg: string): string {
+/* export function encodePersonalMessage(msg: string): string {
   const data = encoding.utf8ToBuffer(msg);
   const buf = Buffer.concat([
     Buffer.from(
@@ -165,7 +165,7 @@ export async function verifySignature(
   } else {
     return eip1271.isValidSignature(address, sig, hash, provider);
   }
-}
+} */
 
 export function convertHexToNumber(hex: string) {
   try {
@@ -191,13 +191,13 @@ export const sanitizeDecimals = (value: string, decimals = 18): string => {
   return _fractional ? [integer, _fractional].join(".") : integer;
 };
 
-export const toWad = (amount: string, decimals = 18): BigNumber => {
+/* export const toWad = (amount: string, decimals = 18): BigNumber => {
   return utils.parseUnits(sanitizeDecimals(amount, decimals), decimals);
 };
 
 export const fromWad = (wad: BigNumberish, decimals = 18): string => {
   return sanitizeDecimals(utils.formatUnits(wad, decimals), decimals);
-};
+}; */
 
 export const LOCALSTORAGE_KEY_TESTNET = "TESTNET";
 export const INITIAL_STATE_TESTNET_DEFAULT = true;

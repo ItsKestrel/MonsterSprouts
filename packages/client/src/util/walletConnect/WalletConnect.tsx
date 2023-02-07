@@ -31,7 +31,7 @@ import {
   SLanding,
   SLayout,
   SToggleContainer,
-} from "../components/app";
+} from "./components/app";
 import { useWalletConnectClient } from "./contexts/ClientContext";
 import { useJsonRpc } from "./contexts/JsonRpcContext";
 import { useChainData } from "./contexts/ChainDataContext";

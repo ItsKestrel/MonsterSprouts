@@ -11,7 +11,7 @@ import {
   useState,
   useRef,
 } from "react";
-import { PublicKey } from "@solana/web3.js";
+/* import { PublicKey } from "@solana/web3.js"; */
 
 import {
   DEFAULT_APP_METADATA,
@@ -37,7 +37,7 @@ interface IContext {
   relayerRegion: string;
   pairings: PairingTypes.Struct[];
   accounts: string[];
-  solanaPublicKeys?: Record<string, PublicKey>;
+  /* solanaPublicKeys?: Record<string, PublicKey>; */
   balances: AccountBalances;
   isFetchingBalances: boolean;
   setChains: any;
@@ -67,8 +67,8 @@ export function ClientContextProvider({
 
   const [balances, setBalances] = useState<AccountBalances>({});
   const [accounts, setAccounts] = useState<string[]>([]);
-  const [solanaPublicKeys, setSolanaPublicKeys] =
-    useState<Record<string, PublicKey>>();
+  /* const [solanaPublicKeys, setSolanaPublicKeys] =
+    useState<Record<string, PublicKey>>(); */
   const [chains, setChains] = useState<string[]>([]);
   const [relayerRegion, setRelayerRegion] = useState<string>(
     DEFAULT_RELAY_URL!
@@ -116,7 +116,7 @@ export function ClientContextProvider({
       setSession(_session);
       setChains(allNamespaceChains);
       setAccounts(allNamespaceAccounts);
-      setSolanaPublicKeys(getPublicKeysFromAccounts(allNamespaceAccounts));
+      /* setSolanaPublicKeys(getPublicKeysFromAccounts(allNamespaceAccounts)); */
       await getAccountBalances(allNamespaceAccounts);
     },
     []
@@ -272,7 +272,7 @@ export function ClientContextProvider({
       balances,
       isFetchingBalances,
       accounts,
-      solanaPublicKeys,
+      /* solanaPublicKeys, */
       chains,
       relayerRegion,
       client,
@@ -288,7 +288,7 @@ export function ClientContextProvider({
       balances,
       isFetchingBalances,
       accounts,
-      solanaPublicKeys,
+      /* solanaPublicKeys, */
       chains,
       relayerRegion,
       client,
