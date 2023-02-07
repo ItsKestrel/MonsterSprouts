@@ -20,7 +20,7 @@ export enum Rarity {
     Common,
 }
 
-export enum Quality {
+export enum Tag {
     Fireproof,
     Traversable,
     Scalable,
@@ -49,13 +49,13 @@ export interface MonsterCard extends BaseCard {
 
 export interface ToolCard extends BaseCard {
     type: CardType.Tool;
-    qualities: Quality[];
+    tags: Tag[];
 }
 
 export interface TrapCard extends BaseCard {
     type: CardType.Trap;
-    effectiveQualities: Quality[];
-    ineffectiveQualities: Quality[];
+    effectiveTags: Tag[];
+    ineffectiveTags: Tag[];
 }
 
 export interface EquipmentCard extends BaseCard {
