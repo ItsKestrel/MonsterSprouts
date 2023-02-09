@@ -1,18 +1,7 @@
-import { useState } from "react";
-import {Link} from 'react-router-dom';
-import Stash from "../components/Stash";
-
-export default function Home(props: {loggedIn: true}) {
-    const {loggedIn} = props;
-
-
+export default function Home() {
     return (
         <div>
-            <h1>Main</h1>
-            <Link to={"game"}>Start Round</Link>
-            <button>Trade Cards</button>
-
-            <Stash />
+            <h1>Home Page</h1>
         </div>
     );
 }
