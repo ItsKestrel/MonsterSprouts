@@ -68,12 +68,6 @@ const WalletConnect = () => {
   // Use `JsonRpcContext` to provide us with relevant RPC methods and states.
   const {
     ping,
-    ethereumRpc,
-    cosmosRpc,
-    solanaRpc,
-    polkadotRpc,
-    nearRpc,
-    elrondRpc,
     chiaRpc,
     isRpcRequestPending,
     rpcResult,
@@ -106,142 +100,6 @@ const WalletConnect = () => {
   const onPing = async () => {
     openPingModal();
     await ping();
-  };
-
-  const getEthereumActions = (): AccountAction[] => {
-    const onSendTransaction = async (chainId: string, address: string) => {
-      openRequestModal();
-      await ethereumRpc.testSendTransaction(chainId, address);
-    };
-    const onSignTransaction = async (chainId: string, address: string) => {
-      openRequestModal();
-      await ethereumRpc.testSignTransaction(chainId, address);
-    };
-    const onSignPersonalMessage = async (chainId: string, address: string) => {
-      openRequestModal();
-      await ethereumRpc.testSignPersonalMessage(chainId, address);
-    };
-    const onEthSign = async (chainId: string, address: string) => {
-      openRequestModal();
-      await ethereumRpc.testEthSign(chainId, address);
-    };
-    const onSignTypedData = async (chainId: string, address: string) => {
-      openRequestModal();
-      await ethereumRpc.testSignTypedData(chainId, address);
-    };
-
-    return [
-      {
-        method: DEFAULT_EIP155_METHODS.ETH_SEND_TRANSACTION,
-        callback: onSendTransaction,
-      },
-      {
-        method: DEFAULT_EIP155_METHODS.ETH_SIGN_TRANSACTION,
-        callback: onSignTransaction,
-      },
-      {
-        method: DEFAULT_EIP155_METHODS.PERSONAL_SIGN,
-        callback: onSignPersonalMessage,
-      },
-      {
-        method: DEFAULT_EIP155_METHODS.ETH_SIGN + " (standard)",
-        callback: onEthSign,
-      },
-      {
-        method: DEFAULT_EIP155_METHODS.ETH_SIGN_TYPED_DATA,
-        callback: onSignTypedData,
-      },
-    ];
-  };
-
-  const getCosmosActions = (): AccountAction[] => {
-    const onSignDirect = async (chainId: string, address: string) => {
-      openRequestModal();
-      await cosmosRpc.testSignDirect(chainId, address);
-    };
-    const onSignAmino = async (chainId: string, address: string) => {
-      openRequestModal();
-      await cosmosRpc.testSignAmino(chainId, address);
-    };
-    return [
-      {
-        method: DEFAULT_COSMOS_METHODS.COSMOS_SIGN_DIRECT,
-        callback: onSignDirect,
-      },
-      {
-        method: DEFAULT_COSMOS_METHODS.COSMOS_SIGN_AMINO,
-        callback: onSignAmino,
-      },
-    ];
-  };
-
-  const getSolanaActions = (): AccountAction[] => {
-    const onSignTransaction = async (chainId: string, address: string) => {
-      openRequestModal();
-      await solanaRpc.testSignTransaction(chainId, address);
-    };
-    const onSignMessage = async (chainId: string, address: string) => {
-      openRequestModal();
-      await solanaRpc.testSignMessage(chainId, address);
-    };
-    return [
-      {
-        method: DEFAULT_SOLANA_METHODS.SOL_SIGN_TRANSACTION,
-        callback: onSignTransaction,
-      },
-      {
-        method: DEFAULT_SOLANA_METHODS.SOL_SIGN_MESSAGE,
-        callback: onSignMessage,
-      },
-    ];
-  };
-
-  const getPolkadotActions = (): AccountAction[] => {
-    const onSignTransaction = async (chainId: string, address: string) => {
-      openRequestModal();
-      await polkadotRpc.testSignTransaction(chainId, address);
-    };
-    const onSignMessage = async (chainId: string, address: string) => {
-      openRequestModal();
-      await polkadotRpc.testSignMessage(chainId, address);
-    };
-    return [
-      {
-        method: DEFAULT_POLKADOT_METHODS.POLKADOT_SIGN_TRANSACTION,
-        callback: onSignTransaction,
-      },
-      {
-        method: DEFAULT_POLKADOT_METHODS.POLKADOT_SIGN_MESSAGE,
-        callback: onSignMessage,
-      },
-    ];
-  };
-
-  const getNearActions = (): AccountAction[] => {
-    const onSignAndSendTransaction = async (
-      chainId: string,
-      address: string
-    ) => {
-      openRequestModal();
-      await nearRpc.testSignAndSendTransaction(chainId, address);
-    };
-    const onSignAndSendTransactions = async (
-      chainId: string,
-      address: string
-    ) => {
-      openRequestModal();
-      await nearRpc.testSignAndSendTransactions(chainId, address);
-    };
-    return [
-      {
-        method: DEFAULT_NEAR_METHODS.NEAR_SIGN_AND_SEND_TRANSACTION,
-        callback: onSignAndSendTransaction,
-      },
-      {
-        method: DEFAULT_NEAR_METHODS.NEAR_SIGN_AND_SEND_TRANSACTIONS,
-        callback: onSignAndSendTransactions,
-      },
-    ];
   };
 
   const getChiaActions = (): AccountAction[] => {
@@ -305,53 +163,11 @@ const WalletConnect = () => {
     ];
   };
 
-
-  const getElrondActions = (): AccountAction[] => {
-    const onSignTransaction = async (chainId: string, address: string) => {
-      openRequestModal();
-      await elrondRpc.testSignTransaction(chainId, address);
-    };
-    const onSignTransactions = async (chainId: string, address: string) => {
-      openRequestModal();
-      await elrondRpc.testSignTransactions(chainId, address);
-    };
-    const onSignMessage = async (chainId: string, address: string) => {
-      openRequestModal();
-      await elrondRpc.testSignMessage(chainId, address);
-    };
-    return [
-      {
-        method: DEFAULT_ELROND_METHODS.ELROND_SIGN_TRANSACTION,
-        callback: onSignTransaction,
-      },
-      {
-        method: DEFAULT_ELROND_METHODS.ELROND_SIGN_TRANSACTIONS,
-        callback: onSignTransactions,
-      },
-      {
-        method: DEFAULT_ELROND_METHODS.ELROND_SIGN_MESSAGE,
-        callback: onSignMessage,
-      },
-    ];
-  };
-
   const getBlockchainActions = (chainId: string) => {
     const [namespace] = chainId.split(":");
     switch (namespace) {
-      case "eip155":
-        return getEthereumActions();
-      case "cosmos":
-        return getCosmosActions();
-      case "solana":
-        return getSolanaActions();
-      case "polkadot":
-        return getPolkadotActions();
-      case "near":
-        return getNearActions();
       case "chia":
         return getChiaActions();
-      case "elrond":
-        return getElrondActions();
       default:
         break;
     }
