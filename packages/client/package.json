@@ -3,7 +3,7 @@
     "main": "dist/main.js",
     "scripts": {
         "build": "parcel build",
-        "dev": "set NODE_ENV=development&&parcel --target app",
+        "dev": "parcel --target app",
         "start": "electron ."
     },
     "targets": {

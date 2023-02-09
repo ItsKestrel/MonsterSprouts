@@ -13,7 +13,6 @@ export default function Login() {
         const signClient = await SignClient.init({
             projectId: process.env.PUBLIC_PROJECT_ID,
             relayUrl: process.env.PUBLIC_RELAY_URL,
-            logger: 'debug',
             metadata: {
                 name: 'Monster Sprouts',
                 description: 'A game on the Chia blockchain.',
