@@ -3,7 +3,7 @@
     "main": "dist/main.js",
     "scripts": {
         "build": "parcel build",
-        "dev": "parcel --target app",
+        "dev": "set NODE_ENV=development&&parcel --target app",
         "start": "electron ."
     },
     "targets": {
@@ -45,6 +45,7 @@
         "lightningcss": "^1.18.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-hooks-global-state": "^2.1.0",
         "react-router-dom": "^6.8.0",
         "styled-components": "^5.3.6"
     }
