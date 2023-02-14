@@ -31,7 +31,6 @@ export interface BaseCard {
     image: string;
     type: CardType;
     rarity: Rarity;
-    durability: number;
 }
 
 export interface WeaponCard extends BaseCard {
@@ -39,6 +38,7 @@ export interface WeaponCard extends BaseCard {
     damage: number;
     criticalDamage: number;
     criticalChance: number;
+    durability: number;
 }
 
 export interface MonsterCard extends BaseCard {
@@ -50,6 +50,7 @@ export interface MonsterCard extends BaseCard {
 export interface ToolCard extends BaseCard {
     type: CardType.Tool;
     tags: Tag[];
+    durability: number;
 }
 
 export interface TrapCard extends BaseCard {
@@ -62,6 +63,7 @@ export interface EquipmentCard extends BaseCard {
     type: CardType.Equipment;
     health: number;
     absorbtion: number;
+    durability: number;
 }
 
 export interface MonsterAction {

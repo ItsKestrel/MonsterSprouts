@@ -7,6 +7,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Game from './pages/Game';
 import Login from './pages/Login';
 import Market from './pages/Market';
+import Home from './pages/Home';
 
 export interface GlobalState {
     session: SessionTypes.Struct | null;
@@ -22,7 +23,7 @@ function App() {
     return (
         <HashRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/game" element={<Game />} />
                 <Route path="/market" element={<Market />} />
