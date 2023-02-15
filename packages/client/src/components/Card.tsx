@@ -22,7 +22,7 @@ export default function Card(props: ICardProps) {
     const cardContents = () => {
         switch (card.type) {
             // Weapon
-            case 0: {
+            case CardType.Weapon: {
                 return (
                     <Grid item container direction='row'>
                         <Grid item container direction='column'>
@@ -45,25 +45,25 @@ export default function Card(props: ICardProps) {
                 );
             }
             // Monster
-            case 1: {
+            case CardType.Monster: {
                 return (
                     <>MONSTER</>
                 );
             }
             // Tool
-            case 2: {
+            case CardType.Tool: {
                 return (
                     <>Tool</>
                 );
             }
             // Trap
-            case 3: {
+            case CardType.Trap: {
                 return (
                     <>Trap</>
                 );
             }
             // Equipment
-            case 4: {
+            case CardType.Equipment: {
                 return (
                     <>Equipment</>
                 );
