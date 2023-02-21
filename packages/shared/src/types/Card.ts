@@ -24,6 +24,9 @@ export enum Tag {
     Fireproof,
     Traversable,
     Scalable,
+    Shielding,
+    Speed,
+    Jump
 }
 
 export interface BaseCard {
@@ -67,6 +70,7 @@ export interface EquipmentCard extends BaseCard {
 }
 
 export interface MonsterAction {
+    name: string,
     damage: number;
     block: number;
 }
