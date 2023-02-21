@@ -1,5 +1,6 @@
 export type Card =
     | WeaponCard
+    | ActionCard
     | MonsterCard
     | ToolCard
     | TrapCard
@@ -7,6 +8,7 @@ export type Card =
 
 export enum CardType {
     Weapon,
+    Action,
     Monster,
     Tool,
     Trap,
@@ -24,6 +26,9 @@ export enum Tag {
     Fireproof,
     Traversable,
     Scalable,
+    Shielding,
+    Speed,
+    Jump
 }
 
 export interface BaseCard {
@@ -31,7 +36,6 @@ export interface BaseCard {
     image: string;
     type: CardType;
     rarity: Rarity;
-    durability: number;
 }
 
 export interface WeaponCard extends BaseCard {
@@ -39,6 +43,12 @@ export interface WeaponCard extends BaseCard {
     damage: number;
     criticalDamage: number;
     criticalChance: number;
+    durability: number;
+}
+
+export interface ActionCard extends BaseCard {
+    type: CardType.Action;
+    tags: Tag[];
 }
 
 export interface MonsterCard extends BaseCard {
@@ -50,6 +60,7 @@ export interface MonsterCard extends BaseCard {
 export interface ToolCard extends BaseCard {
     type: CardType.Tool;
     tags: Tag[];
+    durability: number;
 }
 
 export interface TrapCard extends BaseCard {
@@ -62,9 +73,11 @@ export interface EquipmentCard extends BaseCard {
     type: CardType.Equipment;
     health: number;
     absorbtion: number;
+    durability: number;
 }
 
 export interface MonsterAction {
+    name: string,
     damage: number;
     block: number;
 }
