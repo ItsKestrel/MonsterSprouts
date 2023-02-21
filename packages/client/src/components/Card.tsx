@@ -44,6 +44,26 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
+
+            // Action
+            case CardType.Action: {
+                return (
+                    <Grid item container direction='row'>
+                        <Grid item container direction='column'>
+                            Action
+                        </Grid>
+                        <Grid>
+                            {card.name}
+                        </Grid>
+                        <Grid item container direction='column'>
+                            Tags
+                        </Grid>
+                        <Grid>
+                            {card.tags}
+                        </Grid>
+                    </Grid>
+                );
+            }
             // Monster
             case CardType.Monster: {
                 return (

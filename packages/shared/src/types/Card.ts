@@ -1,5 +1,6 @@
 export type Card =
     | WeaponCard
+    | ActionCard
     | MonsterCard
     | ToolCard
     | TrapCard
@@ -7,6 +8,7 @@ export type Card =
 
 export enum CardType {
     Weapon,
+    Action,
     Monster,
     Tool,
     Trap,
@@ -39,6 +41,11 @@ export interface WeaponCard extends BaseCard {
     criticalDamage: number;
     criticalChance: number;
     durability: number;
+}
+
+export interface ActionCard extends BaseCard {
+    type: CardType.Action;
+    tags: Tag[];
 }
 
 export interface MonsterCard extends BaseCard {
