@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { Grid,Button } from "@mui/material";
 import { Link } from "react-router-dom"
-import {TestDeck} from "../../../shared/TestLoadout"
+import {TestDeck} from "../../../shared/src/TestLoadout"
 
 export default function Home() {
     return (

@@ -1,4 +1,4 @@
-import { Card as TCard, Tag, WeaponCard, EquipmentCard, ToolCard, ActionCard, CardType, Rarity } from "./src/types/Card";
+import { Card as TCard, Tag, WeaponCard, EquipmentCard, ToolCard, ActionCard, CardType, Rarity } from "./types/Card";
 
 const SwordCard: WeaponCard = {
     type: CardType.Weapon,
