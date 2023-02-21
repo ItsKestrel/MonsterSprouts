@@ -29,3 +29,10 @@ export const DragonShield: EquipmentCard = {
     absorbtion: 0.75,
     durability: 25,
 };
+
+
+export const TestLoadout = [
+    MagicWand,
+    AmuletOfHealing,
+    DragonShield
+];

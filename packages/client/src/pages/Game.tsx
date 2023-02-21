@@ -9,10 +9,10 @@ Grid,
 Container,
 } from "@mui/material";
 import { Card as GameCard, CardType, ActionCard, MonsterCard, ToolCard, EquipmentCard, MonsterAction } from "../../../shared/src/types/Card";
-import {Goblin, Orc, Wolf, Troll, Bull} from "../../../shared/src/ChallengeDeck"
-import {MagicWand, AmuletOfHealing, DragonShield} from "../../../shared/src/TestLoot"
+import {MonsterDeck, TrapDeck} from "../../../shared/src/ChallengeDeck";
+import {TestLoadout} from "../../../shared/src/TestLoadout";
+import {TestLoot} from "../../../shared/src/TestLoot";
 
-import {TestDeck} from "../../../shared/src/TestLoadout"
 type LootCard = ActionCard | MonsterCard;
 
 type Room = {
@@ -25,11 +25,9 @@ type Stage = {
     room: Room;
 };
   
-const MONSTER_TYPES = [Goblin, Orc, Wolf, Troll, Bull];
-
-const LOOT_CARDS = [MagicWand, AmuletOfHealing, DragonShield];
-
-const CARD_DECK: GameCard[] = TestDeck 
+const MONSTER_TYPES = MonsterDeck;
+const LOOT_CARDS = TestLoot;
+const CARD_DECK = TestLoadout; 
     
 const generateRoom = (): Room => {
     const monster = MONSTER_TYPES[Math.floor(Math.random() * MONSTER_TYPES.length)];

@@ -21,7 +21,7 @@ const ArmorCard: EquipmentCard = {
     durability: 4
 };
 
-const ToolCard: ToolCard = {
+const Rope: ToolCard = {
     type: CardType.Tool,
     name: 'Rope',
     image: '',
@@ -46,10 +46,10 @@ const Action2Card: ActionCard = {
     tags:[Tag.Traversable]
 };
 
-export const TestDeck = [
+export const TestLoadout = [
     SwordCard,
     ArmorCard,
-    ToolCard,
+    Rope,
     Action1Card,
     Action2Card
 ];
