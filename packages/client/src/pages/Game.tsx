@@ -1,22 +1,13 @@
 
-export default function Game() {
-    return (
-        <div>
-            <h1>Game</h1>
-        </div>
-    );
-}
-
-import React, { useState } from "react";
 import {
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-  Grid,
-  Container,
-} from "@mui/material";
+    Card,
+    CardActions,
+    CardContent,
+    Button,
+    Typography,
+    Grid,
+    Container,
+  } from "@mui/material";
 
 type CardAction = "attack" | "heal" | "defend";
 
@@ -81,7 +72,7 @@ const generateStages = (numStages: number): Stage[] => {
   return stages;
 };
 
-const App = () => {
+export default function Game() {
   const [cards, setCards] = useState<Card[]>([]);
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
   const [isDead, setIsDead] = useState(false);
