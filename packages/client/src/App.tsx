@@ -18,8 +18,6 @@ function App() {
     useEffect(() => {
         if (!client) return;
 
-        console.log('Connect');
-
         if (!session) {
             connect(pairings[0]);
         }

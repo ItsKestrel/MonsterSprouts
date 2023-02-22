@@ -140,8 +140,6 @@ export function WalletConnectContextProvider({
                 throw new Error('WalletConnect is not initialized.');
             }
 
-            console.log('Check persisted state');
-
             setPairings(client.pairing.getAll({ active: true }));
 
             if (!session) return;
