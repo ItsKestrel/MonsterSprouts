@@ -65,6 +65,32 @@ export const Troll: MonsterCard = {
     ]
 }
 
+
+
+export const Wolf: MonsterCard = {
+    name: "Wolf",
+    image: "",
+    type: CardType.Monster,
+    rarity: Rarity.Rare,
+    health: 40,
+    actions: [
+      { name: "Bite", damage: 10, block: 10 },
+      { name: "Rip", damage: 25, block: 0 },
+    ]
+}
+
+export const Bull: MonsterCard = {
+    name: "bull",
+    image: "",
+    type: CardType.Monster,
+    rarity: Rarity.Uncommon,
+    health: 30,
+    actions: [
+      { name: "Smash", damage: 15, block: 5 },
+      { name: "Charge", damage: 20, block: 0 },
+    ]
+}
+
 export const SpikeTrap: TrapCard = {
     type: CardType.Trap,
     name: 'Spike Pit',
@@ -91,3 +117,18 @@ export const WallTrap: TrapCard = {
     effectiveTags: [Tag.Speed],
     ineffectiveTags: [Tag.Traversable]
 }
+
+export const MonsterDeck = [
+    Goblin,
+    Orc,
+    Troll,
+    Wolf,
+    Bull
+];
+
+export const TrapDeck = [
+    SpikeTrap,
+    DartTrap,
+    WallTrap
+];
+
