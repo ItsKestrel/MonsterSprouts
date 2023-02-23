@@ -87,7 +87,9 @@ export function WalletConnectContextProvider({
                 onSessionConnected(session);
                 setPairings(client.pairing.getAll({ active: true }));
             } catch (e) {
-                console.error(e);
+                if (e !== undefined) {
+                    console.log(e);
+                }
             } finally {
                 if (wasOpened) {
                     web3Modal.closeModal();
@@ -142,7 +144,7 @@ export function WalletConnectContextProvider({
 
             setPairings(client.pairing.getAll({ active: true }));
 
-            if (!session) return;
+            if (session) return;
 
             if (client.session.length) {
                 const lastKeyIndex = client.session.keys.length - 1;
