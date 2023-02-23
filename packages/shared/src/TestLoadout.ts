@@ -1,4 +1,12 @@
-import { Card as TCard, Tag, WeaponCard, EquipmentCard, ToolCard, ActionCard, CardType, Rarity } from "./types/Card";
+import {
+    ActionCard,
+    CardType,
+    EquipmentCard,
+    Rarity,
+    Tag,
+    ToolCard,
+    WeaponCard,
+} from './types/Card';
 
 const SwordCard: WeaponCard = {
     type: CardType.Weapon,
@@ -8,18 +16,18 @@ const SwordCard: WeaponCard = {
     damage: 10,
     criticalDamage: 10,
     criticalChance: 10,
-    durability: 4
+    durability: 4,
 };
 
 const ArmorCard: EquipmentCard = {
     type: CardType.Equipment,
     name: 'Leather Armor',
-    health:5,
+    health: 5,
     absorbtion: 3,
     image: '',
     rarity: Rarity.Common,
     durability: 4,
-    tags: []
+    tags: [],
 };
 
 const Rope: ToolCard = {
@@ -28,7 +36,7 @@ const Rope: ToolCard = {
     image: '',
     tags: [Tag.Scalable, Tag.Traversable],
     rarity: Rarity.Common,
-    durability: 4
+    durability: 4,
 };
 
 const Action1Card: ActionCard = {
@@ -36,7 +44,7 @@ const Action1Card: ActionCard = {
     name: 'Fireball',
     image: '',
     rarity: Rarity.Common,
-    tags: []
+    tags: [],
 };
 
 const Action2Card: ActionCard = {
@@ -44,7 +52,7 @@ const Action2Card: ActionCard = {
     name: 'Punch',
     image: '',
     rarity: Rarity.Common,
-    tags: []
+    tags: [],
 };
 
 export const TestLoadout = [
@@ -52,5 +60,5 @@ export const TestLoadout = [
     ArmorCard,
     Rope,
     Action1Card,
-    Action2Card
+    Action2Card,
 ];
