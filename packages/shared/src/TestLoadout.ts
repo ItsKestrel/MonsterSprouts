@@ -1,12 +1,11 @@
 import {
-    Card as TCard,
-    Tag,
-    WeaponCard,
-    EquipmentCard,
-    ToolCard,
     ActionCard,
     CardType,
+    EquipmentCard,
     Rarity,
+    Tag,
+    ToolCard,
+    WeaponCard,
 } from './types/Card';
 
 const SwordCard: WeaponCard = {
