@@ -32,6 +32,7 @@ export enum Tag {
 }
 
 export interface BaseCard {
+    cardId: string;
     name: string;
     image: string;
     type: CardType;

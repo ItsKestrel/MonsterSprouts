@@ -1,15 +1,18 @@
 import {
-    CardType,
-    EquipmentCard,
-    Rarity,
+    Card as TCard,
     Tag,
-    ToolCard,
     WeaponCard,
+    EquipmentCard,
+    ToolCard,
+    ActionCard,
+    CardType,
+    Rarity,
 } from './types/Card';
 
 export const MagicWand: WeaponCard = {
+    cardId: '147uo23knb5tlmwnfgo8sh043',
     name: 'Magic Wand',
-    image: '',
+    image: 'wand.png',
     type: CardType.Weapon,
     rarity: Rarity.Rare,
     damage: 30,
@@ -19,8 +22,9 @@ export const MagicWand: WeaponCard = {
 };
 
 export const AmuletOfHealing: ToolCard = {
+    cardId: 'zje4o95u3o4ih5lngow',
     name: 'Amulet of Healing',
-    image: '',
+    image: 'amulet.png',
     type: CardType.Tool,
     rarity: Rarity.Uncommon,
     tags: [],
@@ -28,8 +32,9 @@ export const AmuletOfHealing: ToolCard = {
 };
 
 export const DragonShield: EquipmentCard = {
+    cardId: 'nmn6tksdfvhj908235h2lkjebfs0',
     name: 'Dragon Shield',
-    image: '',
+    image: 'shield.png',
     type: CardType.Equipment,
     rarity: Rarity.Legendary,
     tags: [Tag.Shielding],

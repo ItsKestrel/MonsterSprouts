@@ -9,6 +9,7 @@ import {
 } from './types/Card';
 
 const SwordCard: WeaponCard = {
+    cardId: '34lkjqnaledfkjgvno',
     type: CardType.Weapon,
     name: 'Sword',
     image: '',
@@ -20,6 +21,7 @@ const SwordCard: WeaponCard = {
 };
 
 const ArmorCard: EquipmentCard = {
+    cardId: '098a345hqawlnjkrg',
     type: CardType.Equipment,
     name: 'Leather Armor',
     health: 5,
@@ -31,6 +33,7 @@ const ArmorCard: EquipmentCard = {
 };
 
 const Rope: ToolCard = {
+    cardId: '3qualmsdfngvgaop983w4',
     type: CardType.Tool,
     name: 'Rope',
     image: '',
@@ -40,6 +43,7 @@ const Rope: ToolCard = {
 };
 
 const Action1Card: ActionCard = {
+    cardId: '045qwbkjtfgoi4u356',
     type: CardType.Action,
     name: 'Fireball',
     image: '',
@@ -48,6 +52,7 @@ const Action1Card: ActionCard = {
 };
 
 const Action2Card: ActionCard = {
+    cardId: 'lk34n5lqwae8fy4o325h',
     type: CardType.Action,
     name: 'Punch',
     image: '',
