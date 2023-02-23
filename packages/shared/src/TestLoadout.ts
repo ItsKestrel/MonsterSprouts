@@ -18,14 +18,15 @@ const ArmorCard: EquipmentCard = {
     absorbtion: 3,
     image: '',
     rarity: Rarity.Common,
-    durability: 4
+    durability: 4,
+    tags: []
 };
 
 const Rope: ToolCard = {
     type: CardType.Tool,
     name: 'Rope',
     image: '',
-    tags: [],
+    tags: [Tag.Scalable, Tag.Traversable],
     rarity: Rarity.Common,
     durability: 4
 };
@@ -35,7 +36,7 @@ const Action1Card: ActionCard = {
     name: 'Fireball',
     image: '',
     rarity: Rarity.Common,
-    tags:[Tag.Traversable]
+    tags: []
 };
 
 const Action2Card: ActionCard = {
@@ -43,7 +44,7 @@ const Action2Card: ActionCard = {
     name: 'Punch',
     image: '',
     rarity: Rarity.Common,
-    tags:[Tag.Traversable]
+    tags: []
 };
 
 export const TestLoadout = [

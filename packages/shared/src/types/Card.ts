@@ -74,6 +74,7 @@ export interface EquipmentCard extends BaseCard {
     health: number;
     absorbtion: number;
     durability: number;
+    tags: Tag[];
 }
 
 export interface MonsterAction {

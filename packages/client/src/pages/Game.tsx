@@ -21,7 +21,7 @@ import {
     WeaponCard,
 } from '../../../shared/src/types/Card';
 
-type LootCard = ActionCard | MonsterCard;
+type LootCard = ActionCard | WeaponCard | ToolCard | EquipmentCard;
 
 type Room = {
     monster: MonsterCard;
