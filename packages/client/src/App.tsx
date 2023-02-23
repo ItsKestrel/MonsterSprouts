@@ -13,19 +13,19 @@ import { useEffect, useState } from 'react';
 import { createGlobalState } from 'react-hooks-global-state';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
+import { BaseCard } from '../../shared/src/types/Card';
 import { useWalletConnectClient } from './contexts/WalletConnectContext';
 import Game from './pages/Game';
 import Home from './pages/Home';
 import Market from './pages/Market';
-import { BaseCard } from '../../shared/src/types/Card';
 
 export interface GlobalState {
     deck: BaseCard[];
 }
 
 const initialState = {
-    deck: []
-}
+    deck: [],
+};
 
 export const { useGlobalState } = createGlobalState<GlobalState>(initialState);
 
