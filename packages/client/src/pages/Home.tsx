@@ -1,16 +1,15 @@
-import { useState } from 'react';
-import { Grid, Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-import { BaseCard } from '../../../shared/src/types/Card';
 import { TestLoadout } from '../../../shared/src/TestLoadout';
+import { Card as GameCard } from '../../../shared/src/types/Card';
 
 import { useGlobalState } from '../App';
 import Card from '../components/Card';
 
-import { SPage } from '../../styles/styles';
+import { SPage } from '../styles/styles';
 
 const Server_URL = 'localhost:3000';
 
@@ -38,7 +37,7 @@ export default function Home() {
         //   });
     };
 
-    const handleClick = (card: BaseCard) => {
+    const handleClick = (card: GameCard) => {
         console.log(card);
         let newSelection = [...cardSelection];
 

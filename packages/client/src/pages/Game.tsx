@@ -27,7 +27,7 @@ type LootCard = ActionCard | WeaponCard | ToolCard | EquipmentCard;
 
 type Room = {
     monster: MonsterCard;
-    loot: LootCard;
+    loot: WeaponCard | EquipmentCard | ToolCard;
 };
 
 type Stage = {
