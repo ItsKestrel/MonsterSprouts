@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { Grid,Button } from "@mui/material";
+import { useState } from 'react';
+import { Grid, Button } from '@mui/material';
 
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import { BaseCard } from "../../../shared/src/types/Card";
-import {TestLoadout} from "../../../shared/src/TestLoadout";
+import { BaseCard } from '../../../shared/src/types/Card';
+import { TestLoadout } from '../../../shared/src/TestLoadout';
 
-import { useGlobalState } from "../App";
-import Card from "../components/Card";
+import { useGlobalState } from '../App';
+import Card from '../components/Card';
 
-import { SPage } from "../../styles/styles";
+import { SPage } from '../../styles/styles';
 
 const Server_URL = 'localhost:3000';
 
@@ -20,22 +20,23 @@ export default function Home() {
 
     const handleStart = () => {
         console.log(cardSelection);
-        axios.get(Server_URL + '/game', {
-            params: {
-              deck: []
-            }
-          })
-          .then(function (response) {
-            console.log(response);
-            navigate(`/game`);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-          .finally(function () {
-            // always executed
-          });
-    }
+        navigate(`/game`);
+        // axios.get(Server_URL + '/game', {
+        //     params: {
+        //       deck: []
+        //     }
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //     navigate(`/game`);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
+        //   .finally(function () {
+        //     // always executed
+        //   });
+    };
 
     const handleClick = (card: BaseCard) => {
         console.log(card);
@@ -51,7 +52,7 @@ export default function Home() {
         }
 
         console.log(cardSelection);
-    }
+    };
 
     return (
         <SPage>
@@ -60,20 +61,16 @@ export default function Home() {
                 {TestLoadout.map((card) => {
                     return (
                         <Grid item>
-                            <Card 
-                                card={card} 
-                                selectable={true} 
-                                onClick={() => handleClick(card)} 
+                            <Card
+                                card={card}
+                                selectable={true}
+                                onClick={() => handleClick(card)}
                             />
                         </Grid>
                     );
                 })}
             </Grid>
-            <Button 
-                variant="contained" 
-                color="success"
-                onClick={handleStart}
-                >
+            <Button variant="contained" color="success" onClick={handleStart}>
                 Start Game
             </Button>
         </SPage>
