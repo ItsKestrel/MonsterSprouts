@@ -1,8 +1,18 @@
-import { Card as TCard, Tag, WeaponCard, EquipmentCard, ToolCard, ActionCard, CardType, Rarity } from "./types/Card";
-    
+import {
+    Card as TCard,
+    Tag,
+    WeaponCard,
+    EquipmentCard,
+    ToolCard,
+    ActionCard,
+    CardType,
+    Rarity,
+} from './types/Card';
+
 export const MagicWand: WeaponCard = {
-    name: "Magic Wand",
-    image: "wand.png",
+    cardId: '147uo23knb5tlmwnfgo8sh043',
+    name: 'Magic Wand',
+    image: 'wand.png',
     type: CardType.Weapon,
     rarity: Rarity.Rare,
     damage: 30,
@@ -12,8 +22,9 @@ export const MagicWand: WeaponCard = {
 };
 
 export const AmuletOfHealing: ToolCard = {
-    name: "Amulet of Healing",
-    image: "amulet.png",
+    cardId: 'zje4o95u3o4ih5lngow',
+    name: 'Amulet of Healing',
+    image: 'amulet.png',
     type: CardType.Tool,
     rarity: Rarity.Uncommon,
     tags: [],
@@ -21,8 +32,9 @@ export const AmuletOfHealing: ToolCard = {
 };
 
 export const DragonShield: EquipmentCard = {
-    name: "Dragon Shield",
-    image: "shield.png",
+    cardId: 'nmn6tksdfvhj908235h2lkjebfs0',
+    name: 'Dragon Shield',
+    image: 'shield.png',
     type: CardType.Equipment,
     rarity: Rarity.Legendary,
     tags: [Tag.Shielding],
@@ -31,9 +43,4 @@ export const DragonShield: EquipmentCard = {
     durability: 25,
 };
 
-
-export const TestLoot = [
-    MagicWand,
-    AmuletOfHealing,
-    DragonShield
-];
+export const TestLoot = [MagicWand, AmuletOfHealing, DragonShield];
