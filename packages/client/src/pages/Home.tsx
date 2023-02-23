@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { TestLoadout } from '../../../shared/src/TestLoadout';
-import { BaseCard } from '../../../shared/src/types/Card';
+import { Card as GameCard } from '../../../shared/src/types/Card';
 
 import { useGlobalState } from '../App';
 import Card from '../components/Card';
 
-import { SPage } from '../../styles/styles';
+import { SPage } from '../styles/styles';
 
 const Server_URL = 'localhost:3000';
 
@@ -19,25 +19,25 @@ export default function Home() {
 
     const handleStart = () => {
         console.log(cardSelection);
-        axios
-            .get(Server_URL + '/game', {
-                params: {
-                    deck: [],
-                },
-            })
-            .then(function (response) {
-                console.log(response);
-                navigate(`/game`);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
+        navigate(`/game`);
+        // axios.get(Server_URL + '/game', {
+        //     params: {
+        //       deck: []
+        //     }
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //     navigate(`/game`);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
+        //   .finally(function () {
+        //     // always executed
+        //   });
     };
 
-    const handleClick = (card: BaseCard) => {
+    const handleClick = (card: GameCard) => {
         console.log(card);
         let newSelection = [...cardSelection];
 
