@@ -16,7 +16,7 @@ export const AmuletOfHealing: ToolCard = {
     image: "",
     type: CardType.Tool,
     rarity: Rarity.Uncommon,
-    tags: [Tag.Traversable],
+    tags: [],
     durability: 3,
 };
 
@@ -25,6 +25,7 @@ export const DragonShield: EquipmentCard = {
     image: "",
     type: CardType.Equipment,
     rarity: Rarity.Legendary,
+    tags: [Tag.Shielding],
     health: 100,
     absorbtion: 0.75,
     durability: 25,
