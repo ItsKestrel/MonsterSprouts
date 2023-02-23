@@ -1,11 +1,11 @@
 import express from 'express';
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 
 /**
- * /start-game (cards)
+ * /start-game (card ids) => game id
  */
 
 const port = process.env.SERVER_PORT!;

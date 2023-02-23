@@ -17,7 +17,7 @@ import {
     PROJECT_ID,
     RELAY_URL,
     REQUIRED_NAMESPACES,
-} from '../constants/walletconnect';
+} from '../constants/wallet-connect';
 
 interface WalletConnect {
     client: Client | undefined;
