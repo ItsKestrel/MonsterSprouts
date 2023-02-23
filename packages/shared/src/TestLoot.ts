@@ -16,7 +16,7 @@ export const AmuletOfHealing: ToolCard = {
     image: "amulet.png",
     type: CardType.Tool,
     rarity: Rarity.Uncommon,
-    tags: [Tag.Traversable],
+    tags: [],
     durability: 3,
 };
 
@@ -25,13 +25,14 @@ export const DragonShield: EquipmentCard = {
     image: "shield.png",
     type: CardType.Equipment,
     rarity: Rarity.Legendary,
+    tags: [Tag.Shielding],
     health: 100,
     absorbtion: 0.75,
     durability: 25,
 };
 
 
-export const TestLoadout = [
+export const TestLoot = [
     MagicWand,
     AmuletOfHealing,
     DragonShield

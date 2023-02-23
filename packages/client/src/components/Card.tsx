@@ -1,23 +1,36 @@
 import { Grid } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 import { Card, CardType } from "../../../shared/src/types/Card";
 
-const SCard = styled.div`
-  width: 200px;
-  height: 300px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  background: grey;
-`;
-
 interface ICardProps {
-    card: Card
+    card: Card,
+    selectable: boolean,
+    onClick: React.MouseEventHandler
 }
 
 export default function Card(props: ICardProps) {
-    const card = props.card;
+    const { card, selectable, onClick } = props;
+
+    const [isSelected, setSelected] = useState(false);
+
+    const SCard = styled.div`
+        width: 200px;
+        height: 300px;
+        padding: 20px;
+        display: flex;
+        box-shadow: ${isSelected ? '0px 0px 30px 0px rgba(45,255,196,0.4)' : ''};
+        justify-content: center;
+        border-radius: 10px;
+        background: grey;
+    `;
+
+    const handleClick = () => {
+        if (selectable) {
+            setSelected(!isSelected);
+            onClick();
+        }
+    }
 
     const cardContents = () => {
         switch (card.type) {
@@ -97,7 +110,7 @@ export default function Card(props: ICardProps) {
     }
 
     return (
-        <SCard>
+        <SCard onClick={handleClick}>
             <Grid container direction='column' alignContent='center' alignItems='center'>
                 <Grid item>
                     <h2>{card.name}</h2>
