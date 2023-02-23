@@ -2,7 +2,7 @@ import { Card as TCard, Tag, WeaponCard, EquipmentCard, ToolCard, ActionCard, Ca
     
 export const MagicWand: WeaponCard = {
     name: "Magic Wand",
-    image: "wand.png",
+    image: "",
     type: CardType.Weapon,
     rarity: Rarity.Rare,
     damage: 30,
@@ -13,7 +13,7 @@ export const MagicWand: WeaponCard = {
 
 export const AmuletOfHealing: ToolCard = {
     name: "Amulet of Healing",
-    image: "amulet.png",
+    image: "",
     type: CardType.Tool,
     rarity: Rarity.Uncommon,
     tags: [Tag.Traversable],
@@ -22,7 +22,7 @@ export const AmuletOfHealing: ToolCard = {
 
 export const DragonShield: EquipmentCard = {
     name: "Dragon Shield",
-    image: "shield.png",
+    image: "",
     type: CardType.Equipment,
     rarity: Rarity.Legendary,
     health: 100,
@@ -31,7 +31,7 @@ export const DragonShield: EquipmentCard = {
 };
 
 
-export const TestLoadout = [
+export const TestLoot = [
     MagicWand,
     AmuletOfHealing,
     DragonShield

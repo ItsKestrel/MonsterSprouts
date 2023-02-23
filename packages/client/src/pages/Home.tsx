@@ -1,14 +1,14 @@
 import Card from "../components/Card";
 import { Grid,Button } from "@mui/material";
 import { Link } from "react-router-dom"
-import {TestDeck} from "../../../shared/src/TestLoadout"
+import {TestLoadout} from "../../../shared/src/TestLoadout"
 
 export default function Home() {
     return (
         <div>
             <h1>Select Your Cards</h1>
             <Grid container spacing={2}>
-                {TestDeck.map((card) => {
+                {TestLoadout.map((card) => {
                     return (
                         <Grid item>
                             <Card card={card} />

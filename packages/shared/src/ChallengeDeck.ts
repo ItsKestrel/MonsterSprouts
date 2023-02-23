@@ -65,8 +65,6 @@ export const Troll: MonsterCard = {
     ]
 }
 
-
-
 export const Wolf: MonsterCard = {
     name: "Wolf",
     image: "",

@@ -8,12 +8,12 @@ Typography,
 Grid,
 Container,
 } from "@mui/material";
-import { Card as GameCard, CardType, ActionCard, MonsterCard, ToolCard, EquipmentCard, MonsterAction } from "../../../shared/src/types/Card";
+import { Card as GameCard, CardType, ActionCard, WeaponCard, MonsterCard, ToolCard, EquipmentCard, MonsterAction } from "../../../shared/src/types/Card";
 import {MonsterDeck, TrapDeck} from "../../../shared/src/ChallengeDeck";
 import {TestLoadout} from "../../../shared/src/TestLoadout";
 import {TestLoot} from "../../../shared/src/TestLoot";
 
-type LootCard = ActionCard | MonsterCard;
+type LootCard = ActionCard | WeaponCard | ToolCard | EquipmentCard;
 
 type Room = {
     monster: MonsterCard;
