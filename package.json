@@ -19,7 +19,7 @@
             "email": "e.zietlow@chia.net"
         }
     ],
-    "license": "MIT",
+    "license": "Apache-2.0",
     "devDependencies": {
         "assert": "^2.0.0",
         "browserify-zlib": "^0.2.0",

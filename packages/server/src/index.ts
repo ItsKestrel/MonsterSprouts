@@ -4,9 +4,7 @@ export const app = express();
 
 app.use(express.json());
 
-/**
- * /start-game (card ids) => game id
- */
+app.use('/api/v1');
 
 const port = process.env.SERVER_PORT!;
 
