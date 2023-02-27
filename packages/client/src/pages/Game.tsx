@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGlobalState } from '../App';
+import { useGameContext } from '../contexts/useGameContext';
 import {
     Card,
     CardActions,
@@ -54,7 +54,8 @@ const generateStages = (numStages: number): Stage[] => {
 };
 
 const App = () => {
-    const [cards, setCards] = useGlobalState('deck');
+    const { deck } = useGameContext();
+    const [cards, setCards] = useState<GameCard[]>(deck);
     const [currentStageIndex, setCurrentStageIndex] = useState(0);
     const [isDead, setIsDead] = useState(false);
     const [playerHealth, setPlayerHealth] = useState(40);

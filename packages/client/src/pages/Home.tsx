@@ -1,12 +1,12 @@
 import { Button, Grid } from '@mui/material';
 
 import axios from 'axios';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TestLoadout } from '../../../shared/src/TestLoadout';
 import { Card as GameCard } from '../../../shared/src/types/Card';
-
-import { useGlobalState } from '../App';
+import { useGameContext } from '../contexts/useGameContext';
 import Card from '../components/Card';
 
 import { SPage } from '../styles/styles';
@@ -15,7 +15,9 @@ const Server_URL = 'localhost:3000';
 
 export default function Home() {
     const navigate = useNavigate();
-    const [cardSelection, setCardSelection] = useGlobalState('deck');
+    //const [cardSelection, setCardSelection] = useGlobalState('deck');
+    const [cardSelection, setCardSelection] = useState<GameCard[]>([]);
+    const { deck, setDeck } = useGameContext();
 
     const handleStart = () => {
         console.log(cardSelection);
@@ -50,7 +52,10 @@ export default function Home() {
             setCardSelection(newSelection);
         }
 
+        setDeck(newSelection);
+
         console.log(cardSelection);
+        console.log('DECK - ', deck);
     };
 
     return (

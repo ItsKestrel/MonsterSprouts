@@ -9,30 +9,21 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { createGlobalState } from 'react-hooks-global-state';
+import { createContext, useEffect, useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Card as GameCard } from '../../shared/src/types/Card';
 import { useWalletConnectClient } from './contexts/WalletConnectContext';
 import Game from './pages/Game';
 import Home from './pages/Home';
 import Market from './pages/Market';
-
-export interface GlobalState {
-    deck: GameCard[];
-}
-
-const initialState = {
-    deck: [],
-};
-
-export const { useGlobalState } = createGlobalState<GlobalState>(initialState);
+import { GameProvider } from './contexts/GameContext';
 
 enum Modal {
     Pairing,
 }
 
 function App() {
+    const [gameState, setGameState] = useState<any>({ deck: [] });
     const { connect, session, pairings, client } = useWalletConnectClient();
 
     const [modal, setModal] = useState<Modal | null>(null);
@@ -54,7 +45,7 @@ function App() {
     }, [session, modal]);
 
     return (
-        <>
+        <GameProvider>
             <HashRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -98,7 +89,7 @@ function App() {
                     </List>
                 </DialogContent>
             </Dialog>
-        </>
+        </GameProvider>
     );
 }
 
