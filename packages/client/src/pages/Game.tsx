@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useGameContext } from '../contexts/useGameContext';
 import {
-    Card,
     CardActions,
     CardContent,
     Button,
@@ -19,6 +18,7 @@ import {
     EquipmentCard,
     MonsterAction,
 } from '../../../shared/src/types/Card';
+import Card from '../components/Card';
 import { MonsterDeck, TrapDeck } from '../../../shared/src/ChallengeDeck';
 import { TestLoadout } from '../../../shared/src/TestLoadout';
 import { TestLoot } from '../../../shared/src/TestLoot';
@@ -120,6 +120,10 @@ const App = () => {
         }
     };
 
+    const handleUse = (card: GameCard) => {
+        console.log('USING: ', card);
+    };
+
     if (isDead) {
         return (
             <Container maxWidth="sm">
@@ -149,7 +153,7 @@ const App = () => {
             <Grid container spacing={2} justifyContent="center">
                 {cards.map((card) => (
                     <Grid item key={card.name}>
-                        <Card variant="outlined">
+                        {/* <Card variant="outlined">
                             <CardContent>
                                 <Typography variant="h6">
                                     {card.name}
@@ -171,7 +175,14 @@ const App = () => {
                                     Fight
                                 </Button>
                             </CardActions>
-                        </Card>
+                        </Card> */}
+                        <Card
+                            useable={true}
+                            card={card}
+                            onUse={() => {
+                                handleUse(card);
+                            }}
+                        />
                     </Grid>
                 ))}
             </Grid>

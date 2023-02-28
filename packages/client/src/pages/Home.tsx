@@ -16,6 +16,7 @@ export default function Home() {
     const navigate = useNavigate();
     //const [cardSelection, setCardSelection] = useGlobalState('deck');
     const [cardSelection, setCardSelection] = useState<GameCard[]>([]);
+    const Stash = TestLoadout;
     const { deck, setDeck } = useGameContext();
 
     const handleStart = () => {
@@ -61,7 +62,7 @@ export default function Home() {
         <SPage>
             <h1>Select Your Cards</h1>
             <Grid container spacing={2}>
-                {TestLoadout.map((card) => {
+                {Stash.map((card) => {
                     return (
                         <Grid item key={card.cardId}>
                             <Card

@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { useState } from 'react';
 import styled from 'styled-components';
 import {
@@ -6,30 +6,20 @@ import {
     CardType,
     Tag,
 } from '../../../shared/src/types/Card';
+import { SCard, SCard_Selected } from '../styles/styles';
 
 interface ICardProps {
     card: GameCard;
-    selectable: boolean;
-    onClick: React.MouseEventHandler;
+    selectable?: boolean;
+    useable?: boolean;
+    onClick?: React.MouseEventHandler;
+    onUse?: (params: any) => any;
 }
 
 export default function Card(props: ICardProps) {
-    const { card, selectable, onClick } = props;
+    const { card, selectable, useable, onClick, onUse } = props;
 
     const [isSelected, setSelected] = useState(false);
-
-    const SCard = styled.div`
-        width: 200px;
-        height: 300px;
-        padding: 20px;
-        display: flex;
-        box-shadow: ${isSelected
-            ? '0px 0px 30px 0px rgba(45,255,196,0.4)'
-            : ''};
-        justify-content: center;
-        border-radius: 10px;
-        background: grey;
-    `;
 
     const handleClick = () => {
         if (selectable) {
@@ -162,6 +152,21 @@ export default function Card(props: ICardProps) {
                                 <Grid item>{card.durability}</Grid>
                             </Grid>
                         </Grid>
+                        {useable ? (
+                            <Grid item container direction="row">
+                                <Grid item>
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        onClick={onUse}
+                                    >
+                                        USE
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        ) : (
+                            <></>
+                        )}
                     </Grid>
                 );
             }
@@ -173,21 +178,42 @@ export default function Card(props: ICardProps) {
     };
 
     return (
-        <SCard onClick={handleClick}>
-            <Grid
-                container
-                direction="column"
-                alignContent="center"
-                alignItems="center"
-            >
-                <Grid item>
-                    <h2>{card.name}</h2>
-                </Grid>
-                <Grid item>
-                    <p>{CardType[card.type]}</p>
-                </Grid>
-                <Grid item>{cardContents()}</Grid>
-            </Grid>
-        </SCard>
+        <>
+            {isSelected ? (
+                <SCard_Selected onClick={handleClick}>
+                    <Grid
+                        container
+                        direction="column"
+                        alignContent="center"
+                        alignItems="center"
+                    >
+                        <Grid item>
+                            <h2>{card.name}</h2>
+                        </Grid>
+                        <Grid item>
+                            <p>{CardType[card.type]}</p>
+                        </Grid>
+                        <Grid item>{cardContents()}</Grid>
+                    </Grid>
+                </SCard_Selected>
+            ) : (
+                <SCard onClick={handleClick}>
+                    <Grid
+                        container
+                        direction="column"
+                        alignContent="center"
+                        alignItems="center"
+                    >
+                        <Grid item>
+                            <h2>{card.name}</h2>
+                        </Grid>
+                        <Grid item>
+                            <p>{CardType[card.type]}</p>
+                        </Grid>
+                        <Grid item>{cardContents()}</Grid>
+                    </Grid>
+                </SCard>
+            )}
+        </>
     );
 }
