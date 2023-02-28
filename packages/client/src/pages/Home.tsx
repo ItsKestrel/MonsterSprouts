@@ -1,13 +1,12 @@
 import { Button, Grid } from '@mui/material';
 
-import axios from 'axios';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { TestLoadout } from '../../../shared/src/TestLoadout';
 import { Card as GameCard } from '../../../shared/src/types/Card';
-import { useGameContext } from '../contexts/useGameContext';
 import Card from '../components/Card';
+import { useGameContext } from '../contexts/useGameContext';
 
 import { SPage } from '../styles/styles';
 
@@ -64,7 +63,7 @@ export default function Home() {
             <Grid container spacing={2}>
                 {TestLoadout.map((card) => {
                     return (
-                        <Grid item>
+                        <Grid item key={card.cardId}>
                             <Card
                                 card={card}
                                 selectable={true}

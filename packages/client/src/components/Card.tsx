@@ -40,7 +40,6 @@ export default function Card(props: ICardProps) {
 
     const cardContents = () => {
         switch (card.type) {
-            // Weapon
             case CardType.Weapon: {
                 return (
                     <Grid item container direction="row">
@@ -60,7 +59,6 @@ export default function Card(props: ICardProps) {
                 );
             }
 
-            // Action
             case CardType.Action: {
                 return (
                     <Grid item container direction="row">
@@ -75,7 +73,7 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
-            // Monster
+
             case CardType.Monster: {
                 return (
                     <Grid item container direction="row">
@@ -96,7 +94,7 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
-            // Tool
+
             case CardType.Tool: {
                 return (
                     <Grid item container direction="row">
@@ -117,7 +115,7 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
-            // Trap
+
             case CardType.Trap: {
                 return (
                     <Grid item container direction="row">
@@ -130,7 +128,7 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
-            // Equipment
+
             case CardType.Equipment: {
                 return (
                     <Grid item container direction="column">
@@ -167,6 +165,7 @@ export default function Card(props: ICardProps) {
                     </Grid>
                 );
             }
+
             default: {
                 return <>NO TYPE</>;
             }
