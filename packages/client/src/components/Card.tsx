@@ -32,19 +32,44 @@ export default function Card(props: ICardProps) {
         switch (card.type) {
             case CardType.Weapon: {
                 return (
-                    <Grid item container direction="row">
-                        <Grid item container direction="column">
-                            <Grid item xs={6}>
-                                Damage
+                    <Grid item container direction="column">
+                        <Grid item container direction="row">
+                            <Grid item container direction="column">
+                                <Grid item xs={6}>
+                                    Damage
+                                </Grid>
+                                <Grid item>{card.damage}</Grid>
                             </Grid>
-                            <Grid item>{card.damage}</Grid>
-                        </Grid>
-                        <Grid item container direction="column">
-                            <Grid item xs={6}>
-                                Durability
+                            <Grid item container direction="column">
+                                <Grid item xs={6}>
+                                    Durability
+                                </Grid>
+                                <Grid item>{card.durability}</Grid>
                             </Grid>
-                            <Grid item>{card.durability}</Grid>
                         </Grid>
+                        {useable ? (
+                            card.actions.length > 0 ? (
+                                <Grid item container direction="row">
+                                    {card.actions.map((action) => {
+                                        return (
+                                            <Grid item>
+                                                <Button
+                                                    variant="contained"
+                                                    color="success"
+                                                    onClick={onUse}
+                                                >
+                                                    {action.name}
+                                                </Button>
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+                            ) : (
+                                <></>
+                            )
+                        ) : (
+                            <></>
+                        )}
                     </Grid>
                 );
             }
@@ -87,21 +112,46 @@ export default function Card(props: ICardProps) {
 
             case CardType.Tool: {
                 return (
-                    <Grid item container direction="row">
-                        <Grid item container direction="column">
-                            <Grid item xs={6}>
-                                Attributes
+                    <Grid item container direction="column">
+                        <Grid item container direction="row">
+                            <Grid item container direction="column">
+                                <Grid item xs={6}>
+                                    Attributes
+                                </Grid>
+                                {card.tags.map((tag) => {
+                                    return <Grid item>{Tag[tag]}</Grid>;
+                                })}
                             </Grid>
-                            {card.tags.map((tag) => {
-                                return <Grid item>{Tag[tag]}</Grid>;
-                            })}
-                        </Grid>
-                        <Grid item container direction="column">
-                            <Grid item xs={6}>
-                                Durability
+                            <Grid item container direction="column">
+                                <Grid item xs={6}>
+                                    Durability
+                                </Grid>
+                                <Grid item>{card.durability}</Grid>
                             </Grid>
-                            <Grid item>{card.durability}</Grid>
                         </Grid>
+                        {useable ? (
+                            card.actions.length > 0 ? (
+                                <Grid item container direction="row">
+                                    {card.actions.map((action) => {
+                                        return (
+                                            <Grid item>
+                                                <Button
+                                                    variant="contained"
+                                                    color="success"
+                                                    onClick={onUse}
+                                                >
+                                                    {action.name}
+                                                </Button>
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+                            ) : (
+                                <></>
+                            )
+                        ) : (
+                            <></>
+                        )}
                     </Grid>
                 );
             }
@@ -153,17 +203,25 @@ export default function Card(props: ICardProps) {
                             </Grid>
                         </Grid>
                         {useable ? (
-                            <Grid item container direction="row">
-                                <Grid item>
-                                    <Button
-                                        variant="contained"
-                                        color="success"
-                                        onClick={onUse}
-                                    >
-                                        USE
-                                    </Button>
+                            card.actions.length > 0 ? (
+                                <Grid item container direction="row">
+                                    {card.actions.map((action) => {
+                                        return (
+                                            <Grid item>
+                                                <Button
+                                                    variant="contained"
+                                                    color="success"
+                                                    onClick={onUse}
+                                                >
+                                                    {action.name}
+                                                </Button>
+                                            </Grid>
+                                        );
+                                    })}
                                 </Grid>
-                            </Grid>
+                            ) : (
+                                <></>
+                            )
                         ) : (
                             <></>
                         )}

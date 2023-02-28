@@ -18,6 +18,16 @@ const SwordCard: WeaponCard = {
     criticalDamage: 10,
     criticalChance: 10,
     durability: 4,
+    actions: [
+        {
+            name: 'Slash',
+            damage: 7,
+        },
+        {
+            name: 'Stab',
+            damage: 10,
+        },
+    ],
 };
 
 const ArmorCard: EquipmentCard = {
@@ -30,6 +40,7 @@ const ArmorCard: EquipmentCard = {
     rarity: Rarity.Common,
     durability: 4,
     tags: [],
+    actions: [],
 };
 
 const Rope: ToolCard = {
@@ -40,6 +51,12 @@ const Rope: ToolCard = {
     tags: [Tag.Scalable, Tag.Traversable],
     rarity: Rarity.Common,
     durability: 4,
+    actions: [
+        {
+            name: 'Lasso',
+            block: 4,
+        },
+    ],
 };
 
 const Action1Card: ActionCard = {

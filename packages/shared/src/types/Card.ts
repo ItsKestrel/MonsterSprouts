@@ -45,6 +45,7 @@ export interface WeaponCard extends BaseCard {
     criticalDamage: number;
     criticalChance: number;
     durability: number;
+    actions: WeaponAction[];
 }
 
 export interface ActionCard extends BaseCard {
@@ -62,6 +63,7 @@ export interface ToolCard extends BaseCard {
     type: CardType.Tool;
     tags: Tag[];
     durability: number;
+    actions: ToolAction[];
 }
 
 export interface TrapCard extends BaseCard {
@@ -76,10 +78,29 @@ export interface EquipmentCard extends BaseCard {
     absorbtion: number;
     durability: number;
     tags: Tag[];
+    actions: EquipmentAction[];
 }
 
 export interface MonsterAction {
     name: string;
     damage: number;
     block: number;
+}
+
+export interface ToolAction {
+    name: string;
+    damage?: number;
+    block?: number;
+}
+
+export interface EquipmentAction {
+    name: string;
+    damage?: number;
+    block?: number;
+}
+
+export interface WeaponAction {
+    name: string;
+    damage: number;
+    block?: number;
 }
