@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import { v4 as uuidv4 } from 'uuid';
 import { api, games } from '../..';
-import { Game } from '../../../../shared/src';
+import { Card, Game } from '../../../../shared/src';
 import { TestLoadout } from '../../../../shared/src/TestLoadout';
 
 export interface StartGameRequest {
@@ -28,15 +28,19 @@ api.post('/start-game', (req, res) => {
         return res.status(400).send('Missing request');
     }
 
+    const cards: Card[] = [];
+
     for (const cardId of data.cardIds) {
-        if (TestLoadout.findIndex((card) => card.cardId === cardId) === -1) {
-            return res.status(400).send('Unknown card ' + cardId);
-        }
+        const card = TestLoadout.find((card) => card.cardId === cardId);
+
+        if (!card) return res.status(400).send('Unknown card ' + cardId);
+
+        cards.push(card);
     }
 
     const gameId = uuidv4();
 
-    const game = new Game(data.playerId);
+    const game = new Game(data.playerId, cards, Math.random());
 
     games[gameId] = game;
 

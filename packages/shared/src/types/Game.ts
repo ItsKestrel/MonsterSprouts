@@ -1,7 +1,13 @@
-export class Game {
-    private player: string;
+import { Card } from './Card';
 
-    constructor(player: string) {
-        this.player = player;
+export class Game {
+    public playerId: string;
+    public cards: Card[];
+    public seed: number;
+
+    constructor(playerId: string, cards: Card[], seed: number) {
+        this.playerId = playerId;
+        this.cards = cards;
+        this.seed = seed;
     }
 }
