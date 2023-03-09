@@ -9,8 +9,8 @@ import { SCard, SCard_Selected } from '../styles/styles';
 
 interface ICardProps {
     card: GameCard;
-    selectable?: boolean;
-    useable?: boolean;
+    selectable: boolean;
+    useable: boolean;
     onClick?: React.MouseEventHandler;
     onUse?: (params: any) => any;
 }

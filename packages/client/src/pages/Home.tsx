@@ -23,16 +23,13 @@ export default function Home() {
     const { deck, setDeck } = useGameContext();
 
     const handleStart = () => {
-        console.log(cardSelIDs);
-        //navigate(`/game`);
         axios
             .post(SERVER_URL + START_ROUTE, {
                 playerId: 'temp',
                 cardIds: cardSelIDs,
             })
             .then(function (response) {
-                console.log(response);
-                //navigate(`/game`);
+                navigate(`/game/${response.data.gameId}`);
             })
             .catch(function (error) {
                 console.log(error);
@@ -43,13 +40,10 @@ export default function Home() {
     };
 
     const handleClick = (card: GameCard) => {
-        console.log(card);
-        console.log(card.cardId);
         let newSelection = [...cardSelection];
         let newCardIDs = [...cardSelIDs];
 
         if (cardSelection.includes(card)) {
-            //console.log("card already selected");
             newSelection.splice(cardSelection.indexOf(card), 1);
             setCardSelection(newSelection);
         } else {
@@ -58,7 +52,6 @@ export default function Home() {
         }
 
         if (cardSelIDs.includes(card.cardId)) {
-            //console.log("card already selected");
             newCardIDs.splice(cardSelIDs.indexOf(card.cardId), 1);
             setCardSelIDs(newCardIDs);
         } else {
@@ -67,9 +60,6 @@ export default function Home() {
         }
 
         setDeck(newSelection);
-
-        console.log(cardSelIDs);
-        //console.log('DECK - ', deck);
     };
 
     return (
@@ -82,6 +72,7 @@ export default function Home() {
                             <Card
                                 card={card}
                                 selectable={true}
+                                useable={false}
                                 onClick={() => handleClick(card)}
                             />
                         </Grid>

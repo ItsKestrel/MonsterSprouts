@@ -48,7 +48,7 @@ function App() {
             <HashRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/game" element={<Game />} />
+                    <Route path="/game/:gameId" element={<Game />} />
                     <Route path="/market" element={<Market />} />
                 </Routes>
             </HashRouter>

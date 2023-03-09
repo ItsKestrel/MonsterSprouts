@@ -1,5 +1,7 @@
 import { Container, Grid, Typography } from '@mui/material';
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { MonsterDeck } from '../../../shared/src/ChallengeDeck';
 import { TestLoot } from '../../../shared/src/TestLoot';
 import {
@@ -11,6 +13,7 @@ import {
     ToolCard,
     WeaponCard,
 } from '../../../shared/src/types/Card';
+import { GAME_ROUTE, SERVER_URL } from '../../util/api';
 import Card from '../components/Card';
 import { useGameContext } from '../contexts/useGameContext';
 
@@ -44,13 +47,33 @@ const generateStages = (numStages: number): Stage[] => {
     return stages;
 };
 
-const App = () => {
+const Game = () => {
+    const { gameId } = useParams();
     const { deck } = useGameContext();
     const [cards, setCards] = useState<GameCard[]>(deck);
     const [currentStageIndex, setCurrentStageIndex] = useState(0);
     const [isDead, setIsDead] = useState(false);
     const [playerHealth, setPlayerHealth] = useState(40);
     const stages = generateStages(5);
+
+    useEffect(() => {
+        console.log(gameId);
+        axios
+            .get(SERVER_URL + GAME_ROUTE, {
+                params: {
+                    gameId: gameId,
+                },
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+    });
 
     const handleEndGame = () => {
         setCards([]);
@@ -167,6 +190,7 @@ const App = () => {
                         </Card> */}
                         <Card
                             useable={true}
+                            selectable={false}
                             card={card}
                             onUse={() => {
                                 handleUse;
@@ -179,4 +203,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Game;
