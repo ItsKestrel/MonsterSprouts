@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
-import { GameCache } from '../../shared/src';
+import { Card, GameCache, TestLoadout } from '../../shared/src';
+import { CardRow, db, GameRow } from './database';
 
 export type { GameInfoRequest, GameInfoResponse } from './routes/api/game-info';
 export type {
@@ -9,6 +10,24 @@ export type {
 } from './routes/api/start-game';
 
 export const gameCaches: Record<number, GameCache> = {};
+
+const gameRows: GameRow[] = db.prepare('SELECT * FROM `games`').all();
+
+for (const gameRow of gameRows) {
+    const cards: Card[] = [];
+
+    const cardRows: CardRow[] = db
+        .prepare('SELECT * FROM `cards` WHERE `game_id` = ?')
+        .all(gameRow.id);
+
+    for (const cardRow of cardRows) {
+        const card = TestLoadout.find((card) => card.cardId === cardRow.id)!;
+
+        cards.push(card);
+    }
+
+    gameCaches[gameRow.id] = new GameCache(cards);
+}
 
 export const app = express();
 app.use(cors());
