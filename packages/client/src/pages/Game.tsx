@@ -1,27 +1,25 @@
-import { useState } from 'react';
-import { useGameContext } from '../contexts/useGameContext';
 import {
+    Button,
     Card,
     CardActions,
     CardContent,
-    Button,
-    Typography,
-    Grid,
     Container,
+    Grid,
+    Typography,
 } from '@mui/material';
+import { useState } from 'react';
+import { MonsterDeck } from '../../../shared/src/ChallengeDeck';
+import { TestLoot } from '../../../shared/src/TestLoot';
 import {
+    ActionCard,
     Card as GameCard,
     CardType,
-    ActionCard,
-    WeaponCard,
+    EquipmentCard,
     MonsterCard,
     ToolCard,
-    EquipmentCard,
-    MonsterAction,
+    WeaponCard,
 } from '../../../shared/src/types/Card';
-import { MonsterDeck, TrapDeck } from '../../../shared/src/ChallengeDeck';
-import { TestLoadout } from '../../../shared/src/TestLoadout';
-import { TestLoot } from '../../../shared/src/TestLoot';
+import { useGameContext } from '../contexts/useGameContext';
 
 type LootCard = ActionCard | WeaponCard | ToolCard | EquipmentCard;
 
@@ -60,8 +58,6 @@ const App = () => {
     const [isDead, setIsDead] = useState(false);
     const [playerHealth, setPlayerHealth] = useState(40);
     const stages = generateStages(5);
-
-    const handleStartGame = () => {};
 
     const handleEndGame = () => {
         setCards([]);

@@ -8,10 +8,15 @@
         "start": "node ."
     },
     "dependencies": {
+        "better-sqlite3": "^8.1.0",
+        "dotenv": "^16.0.3",
         "express": "^4.18.2",
-        "joi": "^17.8.3"
+        "joi": "^17.8.3",
+        "uuid": "^9.0.0"
     },
     "devDependencies": {
-        "@types/express": "^4.17.16"
+        "@types/better-sqlite3": "^7.6.3",
+        "@types/express": "^4.17.16",
+        "@types/uuid": "^9.0.1"
     }
 }
