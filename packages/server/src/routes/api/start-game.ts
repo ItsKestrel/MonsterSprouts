@@ -14,10 +14,11 @@ export interface StartGameResponse {
 }
 
 const schema = Joi.object<StartGameRequest>().keys({
+    playerId: Joi.string(),
     cardIds: Joi.array().items(Joi.string()),
 });
 
-api.get('/start-game', (req, res) => {
+api.post('/start-game', (req, res) => {
     const { body } = req;
     const { value: data, error } = schema.validate(body);
 

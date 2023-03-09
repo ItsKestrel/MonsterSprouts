@@ -9,14 +9,13 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { Card as GameCard } from '../../shared/src/types/Card';
+import { GameProvider } from './contexts/GameContext';
 import { useWalletConnectClient } from './contexts/WalletConnectContext';
 import Game from './pages/Game';
 import Home from './pages/Home';
 import Market from './pages/Market';
-import { GameProvider } from './contexts/GameContext';
 
 enum Modal {
     Pairing,
