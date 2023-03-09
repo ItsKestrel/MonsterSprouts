@@ -109,8 +109,8 @@ const App = () => {
         }
     };
 
-    const handleUse = (card: GameCard) => {
-        console.log('USING: ', card);
+    const handleUse = (action: any) => {
+        console.log('USING: ', action);
     };
 
     if (isDead) {
@@ -169,7 +169,7 @@ const App = () => {
                             useable={true}
                             card={card}
                             onUse={() => {
-                                handleUse(card);
+                                handleUse;
                             }}
                         />
                     </Grid>

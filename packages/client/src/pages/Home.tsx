@@ -1,4 +1,5 @@
 import { Button, Grid } from '@mui/material';
+import axios from 'axios';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,38 +11,44 @@ import { useGameContext } from '../contexts/useGameContext';
 
 import { SPage } from '../styles/styles';
 
-const Server_URL = 'localhost:3000';
+const SERVER_URL = 'http://localhost:3000';
+const START_ROUTE = '/api/v1/start-game';
 
 export default function Home() {
     const navigate = useNavigate();
     //const [cardSelection, setCardSelection] = useGlobalState('deck');
     const [cardSelection, setCardSelection] = useState<GameCard[]>([]);
+    const [cardSelIDs, setCardSelIDs] = useState<string[]>([]);
     const Stash = TestLoadout;
     const { deck, setDeck } = useGameContext();
 
     const handleStart = () => {
-        console.log(cardSelection);
-        navigate(`/game`);
-        // axios.get(Server_URL + '/game', {
-        //     params: {
-        //       deck: []
-        //     }
-        //   })
-        //   .then(function (response) {
-        //     console.log(response);
-        //     navigate(`/game`);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   })
-        //   .finally(function () {
-        //     // always executed
-        //   });
+        console.log(cardSelIDs);
+        //navigate(`/game`);
+        axios
+            .get(SERVER_URL + START_ROUTE, {
+                params: {
+                    playerId: '',
+                    cardIds: cardSelIDs,
+                },
+            })
+            .then(function (response) {
+                console.log(response);
+                //navigate(`/game`);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
     };
 
     const handleClick = (card: GameCard) => {
         console.log(card);
+        console.log(card.cardId);
         let newSelection = [...cardSelection];
+        let newCardIDs = [...cardSelIDs];
 
         if (cardSelection.includes(card)) {
             //console.log("card already selected");
@@ -52,10 +59,19 @@ export default function Home() {
             setCardSelection(newSelection);
         }
 
+        if (cardSelIDs.includes(card.cardId)) {
+            //console.log("card already selected");
+            newCardIDs.splice(cardSelIDs.indexOf(card.cardId), 1);
+            setCardSelIDs(newCardIDs);
+        } else {
+            newCardIDs.push(card.cardId);
+            setCardSelIDs(newCardIDs);
+        }
+
         setDeck(newSelection);
 
-        console.log(cardSelection);
-        console.log('DECK - ', deck);
+        console.log(cardSelIDs);
+        //console.log('DECK - ', deck);
     };
 
     return (

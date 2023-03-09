@@ -1,6 +1,5 @@
 import { Button, Grid } from '@mui/material';
 import { useState } from 'react';
-import styled from 'styled-components';
 import {
     Card as GameCard,
     CardType,
@@ -132,7 +131,7 @@ export default function Card(props: ICardProps) {
                         {useable ? (
                             card.actions.length > 0 ? (
                                 <Grid item container direction="row">
-                                    {card.actions.map((action) => {
+                                    {card.actions.map((action, index) => {
                                         return (
                                             <Grid item>
                                                 <Button
