@@ -1,11 +1,17 @@
+import cors from 'cors';
 import express from 'express';
 import { Game } from '../../shared/src';
 
-export type { StartGame } from './routes/api/start-game';
+export type { GameInfoRequest, GameInfoResponse } from './routes/api/game-info';
+export type {
+    StartGameRequest,
+    StartGameResponse,
+} from './routes/api/start-game';
 
 export const games: Record<string, Game> = {};
 
 export const app = express();
+app.use(cors());
 app.use(express.json());
 
 export const api = express.Router();

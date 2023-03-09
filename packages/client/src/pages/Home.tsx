@@ -26,11 +26,9 @@ export default function Home() {
         console.log(cardSelIDs);
         //navigate(`/game`);
         axios
-            .get(SERVER_URL + START_ROUTE, {
-                params: {
-                    playerId: '',
-                    cardIds: cardSelIDs,
-                },
+            .post(SERVER_URL + START_ROUTE, {
+                playerId: 'temp',
+                cardIds: cardSelIDs,
             })
             .then(function (response) {
                 console.log(response);
