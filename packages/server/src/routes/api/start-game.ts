@@ -1,7 +1,6 @@
 import Joi from 'joi';
-import { Card, GameCache } from 'shared/src';
-import { TestLoadout } from 'shared/src/TestLoadout';
 import { api, gameCaches } from '../..';
+import { Card, GameCache, TestLoadout } from '../../../../shared/src';
 import { db } from '../../database';
 
 export interface StartGameRequest {
