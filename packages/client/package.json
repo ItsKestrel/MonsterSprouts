@@ -1,4 +1,5 @@
 {
+    "name": "client",
     "private": true,
     "main": "dist/main.js",
     "scripts": {

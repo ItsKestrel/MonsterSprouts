@@ -1,8 +1,8 @@
 import Joi from 'joi';
-import { v4 as uuidv4 } from 'uuid';
-import { api, games } from '../..';
-import { Card, Game } from '../../../../shared/src';
-import { TestLoadout } from '../../../../shared/src/TestLoadout';
+import { Card, GameCache } from 'shared/src';
+import { TestLoadout } from 'shared/src/TestLoadout';
+import { api, gameCaches } from '../..';
+import { db } from '../../database';
 
 export interface StartGameRequest {
     playerId: string;
@@ -10,7 +10,7 @@ export interface StartGameRequest {
 }
 
 export interface StartGameResponse {
-    gameId: string;
+    gameId: number;
 }
 
 const schema = Joi.object<StartGameRequest>().keys({
@@ -38,11 +38,36 @@ api.post('/start-game', (req, res) => {
         cards.push(card);
     }
 
-    const gameId = uuidv4();
+    const gameCache = new GameCache(cards);
 
-    const game = new Game(data.playerId, cards, Math.random());
+    const gameId = Number(
+        db
+            .prepare(
+                'INSERT INTO `games` (`did`, `roomSeed`) VALUES (@did, @roomSeed)'
+            )
+            .run({
+                did: data.playerId,
+                roomSeed: Math.random(),
+            }).lastInsertRowid
+    );
 
-    games[gameId] = game;
+    const insertCard = db.prepare(
+        'INSERT INTO `cards` (`id`, `gameId`) VALUES (@id, @gameId)'
+    );
+
+    const insertManyCards = db.transaction(
+        (gameId: number, cards: string[]) => {
+            for (const card of cards)
+                insertCard.run({
+                    id: card,
+                    gameId,
+                });
+        }
+    );
+
+    insertManyCards(gameId, data.cardIds);
+
+    gameCaches[gameId] = gameCache;
 
     const output: StartGameResponse = {
         gameId,

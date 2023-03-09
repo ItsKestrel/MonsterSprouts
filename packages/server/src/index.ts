@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { Game } from '../../shared/src';
+import { GameCache } from '../../shared/src';
 
 export type { GameInfoRequest, GameInfoResponse } from './routes/api/game-info';
 export type {
@@ -8,7 +8,7 @@ export type {
     StartGameResponse,
 } from './routes/api/start-game';
 
-export const games: Record<string, Game> = {};
+export const gameCaches: Record<number, GameCache> = {};
 
 export const app = express();
 app.use(cors());

@@ -1,14 +1,14 @@
 import Joi from 'joi';
-import { api, games } from '../..';
+import { api } from '../..';
 
 export interface GameInfoRequest {
-    gameId: string;
+    gameId: number;
 }
 
 export interface GameInfoResponse {}
 
 const schema = Joi.object<GameInfoRequest>().keys({
-    gameId: Joi.string(),
+    gameId: Joi.number(),
 });
 
 api.get('/game-info', (req, res) => {
@@ -20,8 +20,6 @@ api.get('/game-info', (req, res) => {
     } else if (!data) {
         return res.status(400).send('Missing request');
     }
-
-    const game = games[data.gameId];
 
     const output: GameInfoResponse = {};
 
